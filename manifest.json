@@ -1,0 +1,88 @@
+{
+	"id": "github",
+	"name": "GitHub Releases",
+	"version": "0.1.0",
+	"description": "把 GitHub 仓库的 Release 当作可安装内容。GitHub 没有可浏览的内容目录，所以条目由你手动添加：填仓库地址，再决定从 Release 里挑哪个文件。",
+	"author": "Celestial",
+	"homepage": "https://github.com/Wemsur/Celestial-Content-Plugins",
+	"icon": "icon.svg",
+	"color": "#c9d1d9",
+	"detail_format": "markdown",
+	"api_version": 1,
+	"entry": "dist/index.js",
+	"content_types": ["mod", "resourcepack", "shader", "datapack"],
+	"capabilities": {
+		"search": false,
+		"browse": true,
+		"detail": true,
+		"versions": true,
+		"resolve_download": true,
+		"update_check": true
+	},
+	"hosts": ["api.github.com", "github.com", "objects.githubusercontent.com", "release-assets.githubusercontent.com"],
+	"manual_entry": [
+		{
+			"key": "type",
+			"label": "内容类型",
+			"description": "这个仓库提供的是什么。决定了它出现在哪个标签页，也决定下载后装进哪个文件夹。",
+			"options": [
+				{ "value": "mod", "label": "模组" },
+				{ "value": "resourcepack", "label": "资源包" },
+				{ "value": "shader", "label": "光影" },
+				{ "value": "datapack", "label": "数据包" }
+			],
+			"required": true
+		},
+		{
+			"key": "repo",
+			"label": "仓库（owner/name）",
+			"placeholder": "FabricMC/fabric-api",
+			"pattern": "^[^/\\s]+/[^/\\s]+$",
+			"required": true
+		},
+		{
+			"key": "name",
+			"label": "名称（可选）",
+			"placeholder": "显示在列表里的名字，留空用仓库名",
+			"description": "给条目起个好认的名字。列表和详情页会优先显示它，没有则显示仓库名。"
+		},
+		{
+			"key": "rule",
+			"label": "资产匹配规则（正则，可选）",
+			"placeholder": "\\.jar$ 或 fabric.*1\\.21",
+			"description": "填了就按这个正则从 Release 的资产里挑；留空则用下面设置的默认方式。"
+		},
+		{
+			"key": "prefer",
+			"label": "优先包含（可选，逗号分隔）",
+			"placeholder": "fabric,1.21",
+			"description": "命中越多的资产排得越前。用于同一个 Release 有多个版本/加载器构建时。"
+		},
+		{
+			"key": "exclude",
+			"label": "排除包含（可选，逗号分隔）",
+			"placeholder": "sources,javadoc,dev"
+		}
+	],
+	"settings": [
+		{
+			"key": "token",
+			"label": "GitHub 令牌（可选）",
+			"description": "填了可把请求额度从每小时 60 次提高到 5000 次；读取私有仓库也必须填。只需 read 权限即可。",
+			"type": "text",
+			"default": ""
+		},
+		{
+			"key": "assetMode",
+			"label": "默认资产选择方式",
+			"description": "某个条目没有单独写正则时，用这种方式挑文件。",
+			"type": "select",
+			"default": "jar",
+			"options": [
+				{ "value": "jar", "label": "任意 .jar（排除 sources/javadoc/dev）" },
+				{ "value": "first", "label": "第一个资产" },
+				{ "value": "largest", "label": "体积最大的资产" }
+			]
+		}
+	]
+}

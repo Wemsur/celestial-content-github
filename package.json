@@ -1,0 +1,22 @@
+{
+	"name": "celestial-content-source-github",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"description": "GitHub Releases 内容源",
+	"scripts": {
+		"build": "vite build",
+		"watch": "vite build --watch",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"typescript": "^5.5.4",
+		"vite": "^8.0.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Wemsur/celestial-content-github.git"
+	},
+	"packageManager": "pnpm@9.0.0"
+}
