@@ -1,7 +1,7 @@
 {
 	"id": "github",
 	"name": "GitHub Releases",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"description": "把 GitHub 仓库的 Release 当作可安装内容。GitHub 没有可浏览的内容目录，所以条目由你手动添加：填仓库地址，再决定从 Release 里挑哪个文件。",
 	"author": "Celestial",
 	"homepage": "https://github.com/Wemsur/Celestial-Content-Plugins",
